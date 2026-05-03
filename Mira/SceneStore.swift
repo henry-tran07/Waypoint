@@ -7,6 +7,7 @@ final class SceneStore: ObservableObject {
     @Published private(set) var objects: [String: ObjectRecord] = [:]
     @Published var activeTarget: (label: String, position: SIMD3<Float>)? = nil
     @Published var lastDetectedLabel: String? = nil
+    @Published var lastSceneDescription: String? = nil
 
     func upsert(label: String, position: SIMD3<Float>, confidence: Float) {
         objects[label] = ObjectRecord(

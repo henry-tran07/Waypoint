@@ -40,14 +40,16 @@ final class DetectionService {
         let prompt = """
         List all visible everyday objects. For each, output exactly one JSON line:
         {"label":"<name>","bbox":[x,y,w,h]}
-        x,y = top-left corner, w,h = size, all normalized 0-1. Output only JSON lines, nothing else.
+        x,y = top-left corner, w,h = size, all normalized 0-1.
+        Also output one line: SCENE: <one sentence describing the overall setting and notable objects>.
+        Output only JSON lines and the SCENE line, nothing else.
         """
         let textContent = MessageParameter.Message.Content.ContentObject.text(prompt)
         let message = MessageParameter.Message(role: .user, content: .list([imageContent, textContent]))
         let params = MessageParameter(
             model: .other("claude-haiku-4-5-20251001"),
             messages: [message],
-            maxTokens: 400
+            maxTokens: 500
         )
 
         guard let response = try? await service.createMessage(params) else { return }
@@ -59,6 +61,10 @@ final class DetectionService {
 
         for line in fullText.split(separator: "\n") {
             let trimmed = line.trimmingCharacters(in: .whitespaces)
+            if trimmed.hasPrefix("SCENE:") {
+                store.lastSceneDescription = String(trimmed.dropFirst(6)).trimmingCharacters(in: .whitespaces)
+                continue
+            }
             guard trimmed.hasPrefix("{"),
                   let data = trimmed.data(using: .utf8),
                   let obj = try? JSONDecoder().decode(Detection.self, from: data) else { continue }
