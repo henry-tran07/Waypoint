@@ -4,11 +4,23 @@ struct ContentView: View {
     @EnvironmentObject var store: SceneStore
     var body: some View {
         ZStack {
-            ARViewContainer().ignoresSafeArea()
-            VStack {
-                StatusOverlay().padding(.top, 50)
+            ARViewContainer()
+                .ignoresSafeArea()
+
+            Reticle()
+
+            VStack(spacing: 0) {
+                TranscriptOverlay()
+                    .padding(.horizontal, 16)
+                    .padding(.top, 8)
                 Spacer()
-                MicButton().padding(.bottom, 50)
+                HStack(alignment: .bottom, spacing: 12) {
+                    StatusOverlay()
+                    Spacer(minLength: 12)
+                    VoiceControlButton()
+                }
+                .padding(.horizontal, 16)
+                .padding(.bottom, 12)
             }
         }
     }

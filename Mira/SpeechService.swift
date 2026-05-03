@@ -6,6 +6,7 @@ import AVFoundation
 final class SpeechService: ObservableObject {
     @Published private(set) var transcript: String = ""
     @Published private(set) var isListening: Bool = false
+    @Published private(set) var level: Float = 0
 
     private let recognizer: SFSpeechRecognizer? = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
     private let audioEngine = AVAudioEngine()
@@ -55,6 +56,7 @@ final class SpeechService: ObservableObject {
 
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
         isListening = false
+        level = 0
     }
 
     private func beginSession() {
@@ -75,8 +77,10 @@ final class SpeechService: ObservableObject {
 
         let inputNode = audioEngine.inputNode
         let format = inputNode.outputFormat(forBus: 0)
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: format) { [weak self] buffer, _ in
             request.append(buffer)
+            let lvl = SpeechService.computeLevel(buffer: buffer)
+            Task { @MainActor in self?.level = lvl }
         }
 
         audioEngine.prepare()
@@ -113,5 +117,16 @@ final class SpeechService: ObservableObject {
             guard let self, !Task.isCancelled else { return }
             self.stop()
         }
+    }
+
+    private static func computeLevel(buffer: AVAudioPCMBuffer) -> Float {
+        guard let channelData = buffer.floatChannelData else { return 0 }
+        let frameCount = Int(buffer.frameLength)
+        guard frameCount > 0 else { return 0 }
+        let samples = channelData[0]
+        var sumSq: Float = 0
+        for i in 0..<frameCount { sumSq += samples[i] * samples[i] }
+        let rms = (sumSq / Float(frameCount)).squareRoot()
+        return min(1.0, rms * 8)
     }
 }
