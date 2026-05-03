@@ -67,5 +67,9 @@ struct ARViewContainer: UIViewRepresentable {
             arView.scene.addAnchor(anchor)
             currentAnchor = anchor
         }
+
+        func session(_ session: ARSession, didUpdate frame: ARFrame) {
+            CameraReference.shared.current = Transform(matrix: frame.camera.transform)
+        }
     }
 }
