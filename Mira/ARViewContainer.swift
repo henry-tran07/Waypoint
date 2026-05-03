@@ -36,7 +36,7 @@ struct ARViewContainer: UIViewRepresentable {
         private var detectionService: DetectionService?
         private var currentAnchor: AnchorEntity?
 
-        func configure(store: SceneStore, arView: ARView) {
+        @MainActor func configure(store: SceneStore, arView: ARView) {
             self.arView = arView
             detectionService = DetectionService(arView: arView, store: store)
             detectionService?.start()
