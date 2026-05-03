@@ -23,6 +23,8 @@ enum DirectionUtil {
                : rDot < -0.5 ? "to your left" : ""
         let fb = fDot >  0.5 ? "ahead"
                : fDot < -0.5 ? "behind you"  : ""
-        return "\(fb) \(lr), about \(Int(dist.rounded())) meters away"
+        let parts = [fb, lr].filter { !$0.isEmpty }
+        let dirStr = parts.isEmpty ? "near you" : parts.joined(separator: " ")
+        return "\(dirStr), about \(Int(dist.rounded())) meters away"
     }
 }
