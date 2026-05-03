@@ -20,5 +20,3 @@ targets:
         ENABLE_BITCODE: "NO"
     entitlements:
       path: Mira/Mira.entitlements
-      properties:
-        com.apple.developer.speech-recognition.full-access: true
