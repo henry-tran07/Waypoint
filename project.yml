@@ -13,7 +13,7 @@ targets:
       - path: Mira
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.mira.app
+        PRODUCT_BUNDLE_IDENTIFIER: com.evacab.mira
         TARGETED_DEVICE_FAMILY: "1"
         INFOPLIST_FILE: Mira/Info.plist
         SWIFT_VERSION: "5.9"
