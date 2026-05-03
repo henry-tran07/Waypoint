@@ -1,17 +1,15 @@
 import SwiftUI
 
 struct VoiceControlButton: View {
-    @EnvironmentObject var store: SceneStore
-    @EnvironmentObject var speech: SpeechService
-    @EnvironmentObject var tts: TTSService
+    @EnvironmentObject var coordinator: VoiceCoordinator
 
     var body: some View {
         VStack(spacing: 6) {
             ZStack {
                 Circle()
-                    .stroke(ringColor, lineWidth: 2 + CGFloat(speech.level) * 6)
+                    .stroke(ringColor, lineWidth: 2 + CGFloat(coordinator.level) * 6)
                     .frame(width: 88, height: 88)
-                    .animation(.easeOut(duration: 0.08), value: speech.level)
+                    .animation(.easeOut(duration: 0.08), value: coordinator.level)
 
                 Circle()
                     .fill(.ultraThinMaterial)
@@ -26,11 +24,12 @@ struct VoiceControlButton: View {
             }
             .shadow(color: .black.opacity(0.3), radius: 12, y: 4)
             .contentShape(Circle())
-            .onTapGesture { toggle() }
-            .onChange(of: speech.isListening) { _, listening in
-                guard !listening, !speech.transcript.isEmpty else { return }
-                let transcript = speech.transcript
-                QueryHandler(store: store, tts: tts).handle(transcript: transcript)
+            .onTapGesture {
+                if coordinator.status.isError {
+                    coordinator.openSettings()
+                } else {
+                    coordinator.toggle()
+                }
             }
 
             Text(captionText)
@@ -41,27 +40,40 @@ struct VoiceControlButton: View {
     }
 
     private var iconName: String {
-        speech.isListening ? "waveform" : "mic.fill"
+        switch coordinator.status {
+        case .live: return "waveform"
+        case .connecting, .requestingPermission: return "mic"
+        case .error: return "exclamationmark.triangle.fill"
+        case .offline, .off: return "mic.fill"
+        }
     }
 
     private var iconColor: Color {
-        speech.isListening ? .green : .white
+        switch coordinator.status {
+        case .live: return .green
+        case .error: return .red
+        default: return .white
+        }
     }
 
     private var ringColor: Color {
-        speech.isListening ? .green : .white.opacity(0.25)
+        switch coordinator.status {
+        case .live: return .green
+        case .connecting, .requestingPermission: return .yellow
+        case .error: return .red
+        case .offline: return .orange
+        case .off: return .white.opacity(0.25)
+        }
     }
 
     private var captionText: String {
-        speech.isListening ? "Listening" : "Tap to talk"
-    }
-
-    private func toggle() {
-        if speech.isListening {
-            speech.stop()
-        } else {
-            tts.stop()
-            speech.start()
+        switch coordinator.status {
+        case .off: return "Tap to talk"
+        case .requestingPermission: return "Permission…"
+        case .connecting: return "Connecting…"
+        case .live: return "Listening"
+        case .offline: return "Offline"
+        case .error: return "Tap for Settings"
         }
     }
 }

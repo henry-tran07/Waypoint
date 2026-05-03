@@ -2,20 +2,19 @@ import SwiftUI
 import Combine
 
 struct TranscriptOverlay: View {
-    @EnvironmentObject var speech: SpeechService
-    @EnvironmentObject var tts: TTSService
+    @EnvironmentObject var coordinator: VoiceCoordinator
     @State private var visible: Bool = false
     @State private var fadeTask: Task<Void, Never>?
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            if !speech.transcript.isEmpty {
-                Text(speech.transcript)
+            if !coordinator.transcript.isEmpty {
+                Text(coordinator.transcript)
                     .font(.system(size: 14))
                     .foregroundStyle(.white.opacity(0.7))
                     .lineLimit(2)
             }
-            if let last = tts.lastSpoken, !last.isEmpty {
+            if let last = coordinator.miraResponse, !last.isEmpty {
                 Text(last)
                     .font(.system(size: 16, weight: .medium))
                     .foregroundStyle(.white)
@@ -34,12 +33,12 @@ struct TranscriptOverlay: View {
         .opacity(visible ? 1 : 0)
         .allowsHitTesting(false)
         .animation(.easeInOut(duration: 0.2), value: visible)
-        .onReceive(speech.$transcript) { _ in scheduleFade() }
-        .onReceive(tts.$lastSpoken) { _ in scheduleFade() }
+        .onReceive(coordinator.$transcript) { _ in scheduleFade() }
+        .onReceive(coordinator.$miraResponse) { _ in scheduleFade() }
     }
 
     private func scheduleFade() {
-        let hasContent = !speech.transcript.isEmpty || !(tts.lastSpoken?.isEmpty ?? true)
+        let hasContent = !coordinator.transcript.isEmpty || !(coordinator.miraResponse?.isEmpty ?? true)
         if hasContent { visible = true }
         fadeTask?.cancel()
         fadeTask = Task { @MainActor in
