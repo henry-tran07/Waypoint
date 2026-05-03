@@ -29,7 +29,7 @@
 /* Begin PBXFileReference section */
 		07EBBC3E5E43F98E6F39819D /* TTSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSService.swift; sourceTree = "<group>"; };
 		09A8B3AC2E512859479C6C3A /* SceneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStore.swift; sourceTree = "<group>"; };
-		2824EFB7442C6F4AF52C6FBE /* Mira.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Mira.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2824EFB7442C6F4AF52C6FBE /* Mira.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mira.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28EB259118914034F54FDA0B /* DirectionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionUtil.swift; sourceTree = "<group>"; };
 		366BBF5E3513A048DABC64F9 /* StatusOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusOverlay.swift; sourceTree = "<group>"; };
 		38BAD0BF55C731395EB23E59 /* QueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryHandler.swift; sourceTree = "<group>"; };
@@ -39,14 +39,14 @@
 		6677BAFEF858CE33561E98DE /* CameraReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraReference.swift; sourceTree = "<group>"; };
 		67CBF7719E827D80F5CE1812 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		6F45E090B4DAA39E04743586 /* DetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionService.swift; sourceTree = "<group>"; };
-		9ACCE591A700D4BC2DA349C7 /* YOLOv8n.mlpackage */ = {isa = PBXFileReference; path = YOLOv8n.mlpackage; sourceTree = "<group>"; };
+		9ACCE591A700D4BC2DA349C7 /* YOLOv8n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = YOLOv8n.mlpackage; sourceTree = "<group>"; };
 		9CADAB1292621C1E3DAB7886 /* MicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicButton.swift; sourceTree = "<group>"; };
 		A3D9F09AFED0F3C6A086CB5D /* ObjectRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectRecord.swift; sourceTree = "<group>"; };
-		C16BA6B224664206A75A1411 /* yolov8n.pt */ = {isa = PBXFileReference; path = yolov8n.pt; sourceTree = "<group>"; };
+		C16BA6B224664206A75A1411 /* yolov8n.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov8n.pt; sourceTree = "<group>"; };
 		C5888DF14CBD0724F45D99DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D6A379AF3382596E92921264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DA0389949E9946918CEE0916 /* Mira.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mira.entitlements; sourceTree = "<group>"; };
-		EED0270D2D71F83B7E33D783 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
+		EED0270D2D71F83B7E33D783 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		F0CF1B05DB59907A3997E847 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,8 +131,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 1C1A3E0DA6BA974807332677 /* Build configuration list for PBXProject "Mira" */;
 			developmentRegion = en;
@@ -253,6 +251,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Mira/Mira.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = W4D4TNP45F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Mira/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -273,6 +272,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Mira/Mira.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = W4D4TNP45F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Mira/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
