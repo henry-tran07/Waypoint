@@ -2,7 +2,7 @@ import Foundation
 import AVFoundation
 
 @MainActor
-final class TTSService {
+final class TTSService: ObservableObject {
     private let synthesizer = AVSpeechSynthesizer()
 
     func speak(_ text: String) {

@@ -76,7 +76,7 @@ final class SpeechService: ObservableObject {
         let inputNode = audioEngine.inputNode
         let format = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: format) { buffer, _ in
-            request.appendAudioPCMBuffer(buffer)
+            request.append(buffer)
         }
 
         audioEngine.prepare()

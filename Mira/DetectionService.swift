@@ -1,3 +1,4 @@
+import RealityKit
 import ARKit
 import Vision
 import CoreML
