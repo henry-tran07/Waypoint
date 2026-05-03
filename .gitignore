@@ -27,3 +27,4 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+Mira.xcodeproj/project.xcworkspace/xcuserdata/
