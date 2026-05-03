@@ -1,0 +1,29 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# CocoaPods
+Pods/
+
+# macOS
+.DS_Store
+
+# YOLOv8 source weights (we commit the .mlpackage bundle but not the original PyTorch weights)
+yolov8n*.pt
+*.mlmodelc
+
+# Python (if model conversion happens locally)
+__pycache__/
+*.pyc
+.venv/
+venv/

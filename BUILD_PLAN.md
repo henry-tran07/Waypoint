@@ -26,7 +26,7 @@ main
  └──── feat/voice-ui       ← Person B   (Track B: Interaction layer)
 ```
 
-- Foundation work goes directly to `main` (you're at the same keyboard, no need to PR yourselves).
+- Foundation work goes to `feat/foundation`, gets PR'd to `main`, both eyeball-review and merge. Even the foundation phase does not push directly to `main`.
 - Each track is a long-lived feature branch.
 - **First merge sync** at ~hour 3: each track opens a small PR back to `main`, the other reviews in 5 min, both merge. Catches contract drift early.
 - **Second merge sync** at ~hour 4.5: same pattern.
@@ -54,7 +54,7 @@ Split is by **input pipeline vs. output pipeline**, not by skill. Each track get
 
 > "User intent in → spoken guidance out."
 
-- SwiftUI shell beyond what foundation set up (mic button, status overlay showing "Seen: bottle, keys, book")
+- SwiftUI shell beyond what foundation set up (mic button, status overlay showing "Seen: bottle, cup, book")
 - SpeechService: `SFSpeechRecognizer` wrapper (start/stop, deliver text)
 - TTSService: `AVSpeechSynthesizer` wrapper
 - QueryHandler: text → noun extraction → store lookup → set `activeTarget` + speak direction

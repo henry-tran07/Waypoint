@@ -7,7 +7,7 @@
 
 ## 1. Product summary
 
-**Mira-iPhone** is a single iOS app that helps a user find physical objects in their environment by voice. The user opens the app, walks around their room while Mira passively scans, then asks "where are my keys?" — Mira drops an AR arrow at the keys' last-known position and says "to your left, about 2 meters away."
+**Mira-iPhone** is a single iOS app that helps a user find physical objects in their environment by voice. The user opens the app, walks around their room while Mira passively scans, then asks "where is my bottle?" — Mira drops an AR arrow at the bottle's last-known position and says "to your left, about 2 meters away."
 
 Demo moment: tap the mic, ask, walk toward a glowing arrow that points at the real object. That's the entire pitch.
 
@@ -16,7 +16,7 @@ Demo moment: tap the mic, ask, walk toward a glowing arrow that points at the re
 The product is **always-on while open**. There is no "start scan" / "stop scan" button. There is no indexing phase the user waits through. Detection runs continuously the entire time the app is in the foreground; the mic button is the only intentional user interaction.
 
 1. **Launch.** User opens Mira → camera + ARKit + LiDAR + YOLO detection start immediately. No setup screen.
-2. **Initial scan (~30s).** User walks around the room with the phone held up. Mira silently builds the 3D mesh and populates `SceneStore` with everything YOLO recognizes. Status overlay shows the growing list ("Seen: bottle, keys, book…") so the user has feedback that something's happening.
+2. **Initial scan (~30s).** User walks around the room with the phone held up. Mira silently builds the 3D mesh and populates `SceneStore` with everything YOLO recognizes. Status overlay shows the growing list ("Seen: bottle, cup, book…") so the user has feedback that something's happening.
 3. **Phone stays running.** User can prop it on a desk, hold it casually, or carry it around. As long as the camera sees the room, detection keeps refreshing positions in the background. There's no idle state.
 4. **Query anytime.** User taps the mic and asks "where are my X?" — Mira responds with arrow + voice. They can ask again, ask about other things, ask about the same thing after they've moved — all without re-scanning.
 5. **Passive refresh.** If an object moves and Mira sees it again, the dict updates automatically (newer overwrites older). No user action needed.
@@ -33,7 +33,7 @@ Three capabilities. Nothing else:
 
 1. **Scene understanding** — ARKit world tracking + LiDAR scene reconstruction builds a live 3D mesh as the user walks around.
 2. **Object detection with 3D coordinates** — YOLOv8n (Core ML) runs on captured frames at 2 Hz; each detection is raycast into the scene mesh and stored with a real-world `SIMD3<Float>` position.
-3. **Live voice query** — user taps a mic button, speaks ("where are my keys"), Mira matches against the in-memory dict, drops an AR anchor with a glowing arrow at the match position, and speaks a direction string.
+3. **Live voice query** — user taps a mic button, speaks ("where is my bottle"), Mira matches against the in-memory dict, drops an AR anchor with a glowing arrow at the match position, and speaks a direction string.
 
 ---
 
@@ -121,14 +121,14 @@ every 0.5s:
 ```
 mic tap
   → SFSpeechRecognizer transcribes
-  → extract noun ("keys")
-  → record = store.objects["keys"]
+  → extract noun ("bottle")
+  → record = store.objects["bottle"]
   → if record:
         store.activeTarget = (label, record.position)
         dir = describeDirection(camera, record.position)
-        tts.speak("Your keys are \(dir)")
+        tts.speak("Your bottle is \(dir)")
      else:
-        tts.speak("I haven't seen your keys yet — try walking around.")
+        tts.speak("I haven't seen your bottle yet — try walking around.")
 ```
 
 ARView observes `activeTarget` via Combine. When it flips non-nil, ARView adds an `ARAnchor` at the position and attaches a glowing arrow entity. Newer detections overwriting older entries means a moved object updates next time it's seen — passive scene refresh, no extra logic.
@@ -218,7 +218,7 @@ Pure function. Lives in `DirectionUtil.swift`. Owned by Track B.
 
 ## 11. Demo script (the bar to clear)
 
-> "This is Mira. I open the app, the camera starts, I walk around my desk for 30 seconds — the app is silently building a 3D map and noting where everything is. Now I tap the mic and say 'where are my keys?' [arrow appears, voice speaks] 'Your keys are to your right, about 1 meter away.' I follow the arrow. There they are."
+> "This is Mira. I open the app, the camera starts, I walk around my desk for 30 seconds — the app is silently building a 3D map and noting where everything is. Now I tap the mic and say 'where is my bottle?' [arrow appears, voice speaks] 'Your bottle is to your right, about 1 meter away.' I follow the arrow. There it is."
 
 If your build at hour 5 can do exactly that paragraph, you're done.
 
