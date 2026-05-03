@@ -28,3 +28,6 @@ __pycache__/
 .venv/
 venv/
 Mira.xcodeproj/project.xcworkspace/xcuserdata/
+
+# API keys — never commit
+Mira/Secrets.swift

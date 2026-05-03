@@ -16,7 +16,16 @@ enum Raycaster {
         )
     }
 
-    private static func worldPosition(screenPoint: CGPoint, frame: ARFrame, arView: ARView) -> SIMD3<Float> {
+    // Claude Vision bbox: normalized, origin top-left, Y-down — no Y-flip needed
+    static func raycastFromTopLeft(in frame: ARFrame, arView: ARView, bbox: CGRect) -> SIMD3<Float> {
+        let screenPoint = CGPoint(
+            x: (bbox.origin.x + bbox.width  / 2) * arView.bounds.width,
+            y: (bbox.origin.y + bbox.height / 2) * arView.bounds.height
+        )
+        return worldPosition(screenPoint: screenPoint, frame: frame, arView: arView)
+    }
+
+    static func worldPosition(screenPoint: CGPoint, frame: ARFrame, arView: ARView) -> SIMD3<Float> {
         let hits = arView.raycast(from: screenPoint, allowing: .estimatedPlane, alignment: .any)
         if let hit = hits.first {
             let c = hit.worldTransform.columns.3

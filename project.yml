@@ -4,6 +4,10 @@ options:
   deploymentTarget:
     iOS: "18.0"
   xcodeVersion: "15"
+packages:
+  SwiftAnthropic:
+    url: https://github.com/jamesrochabrun/SwiftAnthropic
+    from: "2.0.0"
 targets:
   Mira:
     type: application
@@ -11,6 +15,9 @@ targets:
     deploymentTarget: "18.0"
     sources:
       - path: Mira
+    dependencies:
+      - package: SwiftAnthropic
+        product: SwiftAnthropic
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.evacab.mira

@@ -11,12 +11,14 @@
 		068D7FB53B4EDCA11E47793A /* ObjectRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D9F09AFED0F3C6A086CB5D /* ObjectRecord.swift */; };
 		12EBC7EEEEC1EE19AC733C4D /* CameraReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6677BAFEF858CE33561E98DE /* CameraReference.swift */; };
 		1AFDCD3C6A49357DF9277A5C /* StatusOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366BBF5E3513A048DABC64F9 /* StatusOverlay.swift */; };
+		1C441AC730240E409B811592 /* SwiftAnthropic in Frameworks */ = {isa = PBXBuildFile; productRef = EF474606B40DCEA8C5AA90BA /* SwiftAnthropic */; };
 		360E0896D2EFBA747F296853 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67CBF7719E827D80F5CE1812 /* ARViewContainer.swift */; };
 		38FC17ED8370683D3C820FD8 /* SceneStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8B3AC2E512859479C6C3A /* SceneStore.swift */; };
 		3973B334FA7D6BDD935CB81E /* yolov8n.pt in Resources */ = {isa = PBXBuildFile; fileRef = C16BA6B224664206A75A1411 /* yolov8n.pt */; };
 		3CD10FB80EA3EC92F107E336 /* YOLOv8n.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 9ACCE591A700D4BC2DA349C7 /* YOLOv8n.mlpackage */; };
 		57424F0FA786F05E23FFEFF2 /* Raycaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519F6C05BDD6655D7CF9460B /* Raycaster.swift */; };
 		59ADD90C663D342677D870C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5888DF14CBD0724F45D99DC /* ContentView.swift */; };
+		59D7500E1A3335B3DF9B4723 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C08A70DE524022D7D0F561 /* Secrets.swift */; };
 		5A39D0E05317A8336E30FBDC /* QueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BAD0BF55C731395EB23E59 /* QueryHandler.swift */; };
 		8F6C1948E400709C8BD4F72B /* MicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CADAB1292621C1E3DAB7886 /* MicButton.swift */; };
 		AC56C84BA68F493C7F4933EE /* ArrowEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577E580D44AB00B51F0EE36F /* ArrowEntity.swift */; };
@@ -29,7 +31,7 @@
 /* Begin PBXFileReference section */
 		07EBBC3E5E43F98E6F39819D /* TTSService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSService.swift; sourceTree = "<group>"; };
 		09A8B3AC2E512859479C6C3A /* SceneStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStore.swift; sourceTree = "<group>"; };
-		2824EFB7442C6F4AF52C6FBE /* Mira.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mira.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2824EFB7442C6F4AF52C6FBE /* Mira.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Mira.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28EB259118914034F54FDA0B /* DirectionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionUtil.swift; sourceTree = "<group>"; };
 		366BBF5E3513A048DABC64F9 /* StatusOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusOverlay.swift; sourceTree = "<group>"; };
 		38BAD0BF55C731395EB23E59 /* QueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryHandler.swift; sourceTree = "<group>"; };
@@ -39,16 +41,28 @@
 		6677BAFEF858CE33561E98DE /* CameraReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraReference.swift; sourceTree = "<group>"; };
 		67CBF7719E827D80F5CE1812 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		6F45E090B4DAA39E04743586 /* DetectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionService.swift; sourceTree = "<group>"; };
-		9ACCE591A700D4BC2DA349C7 /* YOLOv8n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = YOLOv8n.mlpackage; sourceTree = "<group>"; };
+		9ACCE591A700D4BC2DA349C7 /* YOLOv8n.mlpackage */ = {isa = PBXFileReference; path = YOLOv8n.mlpackage; sourceTree = "<group>"; };
 		9CADAB1292621C1E3DAB7886 /* MicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicButton.swift; sourceTree = "<group>"; };
 		A3D9F09AFED0F3C6A086CB5D /* ObjectRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectRecord.swift; sourceTree = "<group>"; };
-		C16BA6B224664206A75A1411 /* yolov8n.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov8n.pt; sourceTree = "<group>"; };
+		B6C08A70DE524022D7D0F561 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		C16BA6B224664206A75A1411 /* yolov8n.pt */ = {isa = PBXFileReference; path = yolov8n.pt; sourceTree = "<group>"; };
 		C5888DF14CBD0724F45D99DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D6A379AF3382596E92921264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DA0389949E9946918CEE0916 /* Mira.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mira.entitlements; sourceTree = "<group>"; };
-		EED0270D2D71F83B7E33D783 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		EED0270D2D71F83B7E33D783 /* .gitkeep */ = {isa = PBXFileReference; path = .gitkeep; sourceTree = "<group>"; };
 		F0CF1B05DB59907A3997E847 /* SpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22EDEAB8214AC2CD5D499BCE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C441AC730240E409B811592 /* SwiftAnthropic in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		6BAEE14F16EA8C85A415D967 /* Products */ = {
@@ -84,6 +98,7 @@
 				38BAD0BF55C731395EB23E59 /* QueryHandler.swift */,
 				519F6C05BDD6655D7CF9460B /* Raycaster.swift */,
 				09A8B3AC2E512859479C6C3A /* SceneStore.swift */,
+				B6C08A70DE524022D7D0F561 /* Secrets.swift */,
 				F0CF1B05DB59907A3997E847 /* SpeechService.swift */,
 				366BBF5E3513A048DABC64F9 /* StatusOverlay.swift */,
 				07EBBC3E5E43F98E6F39819D /* TTSService.swift */,
@@ -111,6 +126,7 @@
 			buildPhases = (
 				8CC7FB676E4E4AEB2529B18A /* Sources */,
 				B19DAB7420EB69D1E22FD93F /* Resources */,
+				22EDEAB8214AC2CD5D499BCE /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -118,6 +134,7 @@
 			);
 			name = Mira;
 			packageProductDependencies = (
+				EF474606B40DCEA8C5AA90BA /* SwiftAnthropic */,
 			);
 			productName = Mira;
 			productReference = 2824EFB7442C6F4AF52C6FBE /* Mira.app */;
@@ -131,6 +148,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 1C1A3E0DA6BA974807332677 /* Build configuration list for PBXProject "Mira" */;
 			developmentRegion = en;
@@ -141,6 +160,9 @@
 			);
 			mainGroup = 9F12A7678DA6DB07C4E15942;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7511A0BDDD17EF1FEFC41245 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6BAEE14F16EA8C85A415D967 /* Products */;
 			projectDirPath = "";
@@ -179,6 +201,7 @@
 				5A39D0E05317A8336E30FBDC /* QueryHandler.swift in Sources */,
 				57424F0FA786F05E23FFEFF2 /* Raycaster.swift in Sources */,
 				38FC17ED8370683D3C820FD8 /* SceneStore.swift in Sources */,
+				59D7500E1A3335B3DF9B4723 /* Secrets.swift in Sources */,
 				C98A0FD7B7369857CC2D482E /* SpeechService.swift in Sources */,
 				1AFDCD3C6A49357DF9277A5C /* StatusOverlay.swift in Sources */,
 				F36EE4469B0B2F616E33BD6F /* TTSService.swift in Sources */,
@@ -251,7 +274,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Mira/Mira.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = W4D4TNP45F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Mira/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -272,7 +294,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Mira/Mira.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = W4D4TNP45F;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Mira/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
@@ -372,6 +393,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7511A0BDDD17EF1FEFC41245 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jamesrochabrun/SwiftAnthropic";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EF474606B40DCEA8C5AA90BA /* SwiftAnthropic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7511A0BDDD17EF1FEFC41245 /* XCRemoteSwiftPackageReference "SwiftAnthropic" */;
+			productName = SwiftAnthropic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3646508DA08F58E0B720B9B9 /* Project object */;
 }
